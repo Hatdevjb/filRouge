@@ -4,6 +4,38 @@
     box-sizing: border-box;
 }
 
-h1 {
-    color:aquamarine;
-}
+    h1 {
+        color:aquamarine;
+    }
+
+    /* Navbar */
+
+    .navbar > .container-fluid {
+        background-color: #124660;
+        
+    }
+
+    .navbar > .container-fluid > a > img {
+        background-color: #124660;
+        border-color: #F4EBD6;
+        border-style: solid; 
+        border-width: 1px;
+        border-radius: 18px;
+    } 
+
+    
+
+    /* .custom-toggler  .navbar-toggler-icon {
+        border-color: rgb(244 235 214);
+    } */
+
+    .navbar li .nav-link {
+        color: #F4EBD6;
+
+    }
+
+    /* body
+
+    body {
+        background-color: #124660;
+    }
