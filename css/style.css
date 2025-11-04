@@ -11,7 +11,7 @@
     /* Navbar */
 
     .navbar > .container {
-        background-color: #124660;
+        background-color: rgba(76, 82, 85, 0.4);
         
     }
 
@@ -25,9 +25,14 @@
 
 
     .navbar li .nav-link {
-        color: #F4EBD6;
-
+        color: #F4EBD6; 
     }
+
+    .navbar li .nav-link:hover {
+        background-color: rgba(18, 70, 96, 0.4);
+        border-radius: 16px;
+    }
+
 
     /* couleur du toggler buton en mobile  */
 
@@ -39,7 +44,9 @@
         border: 1px solid #F4EBD6
     }
 
-    /* body
+    /* body */
+
+
 
    
     
