@@ -4,6 +4,9 @@
     box-sizing: border-box;
 }
 
+    h1 {
+        color:aquamarine;
+    }
 
     /* Navbar */
 
@@ -28,7 +31,6 @@
     .navbar li .nav-link:hover {
         background-color: rgba(18, 70, 96, 0.4);
         border-radius: 16px;
-        transform: translateY();
     }
 
 
