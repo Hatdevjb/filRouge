@@ -3,33 +3,70 @@
     padding: 0;
     box-sizing: border-box;
 }
+
 body {
-  color: #f4ebd6;
-  font-family: Arial, sans-serif;
-  margin: 0; 
-  padding-top: 80px; 
+    color: #f4ebd6;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding-top:inherit;
 }
 
 /*NAVBAR*/
-.logo{
-    width: 158px;
-    height: 158px;
-    background-color: #f4ebd6 !important;
-}
-.bg-body-tertiary {
-    background-color: rgba(18, 70, 96, 1) !important;
-    height: 80px;
-}
-.nav-link{
-    text-decoration: none;
-    color: #f4ebd6 !important;
-    font-size: 16px;
-}
-.navbar{
+/* Navbar */
+
+.navbar>.container {
+    background-color: rgba(18, 70, 96, 1);
+    max-width: 100%;
     position: fixed;
     top: 0;
     width: 100%;
+    z-index: 1;
+    margin: 0;
 }
+
+/* logo */
+.navbar>.container>a>img {
+    background-color: #124660;
+    border-color: #f4ebd686;
+    padding: 3px;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 16px;
+    margin-left: 8rem;
+    max-width: 100%;
+    width: 50%;
+    height: 4rem;
+}
+
+/* Contenue de la navba (média querry à faire querry sur breakpoind bootstrap md)*/
+.navbar li .nav-link {
+    color: #F4EBD6;
+    margin-right: 2rem;
+}
+
+.navbar li .nav-link:hover {
+    background-color: rgba(199, 219, 194, 0.5);
+    border-radius: 16px;
+    transition-duration: 1ms;
+}
+
+
+/* couleur du toggler buton en mobile  */
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28244, 235, 214, 0.75%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-toggler {
+    border: 1px solid #F4EBD6
+}
+
+.search-bar {
+    display: inline-block;
+    margin-top: 20px;
+    justify-content: center;
+}
+
 /* Conteneur principal */
 .container_movie {
     max-width: 1200px;
@@ -49,17 +86,17 @@ body {
     background-repeat: no-repeat;
     background-size:cover;
     background-position: center;
+    backdrop-filter: brightness(5%);
     width: 100%;
-    max-width: 100%;
-    min-height: fit-content; /* occupe toute la hauteur visible */
-    display: flex;
+    max-width: 100%;    display: flex;
     justify-content: center;
+    margin-top: 3.9rem;
 }
 
 /* Affiche du film */
 #poster {
-    margin-top: 2rem;
-    width: 50%;
+    margin-top: 6rem;
+    width: 100%;
     max-width: 350px;
     height: auto;
     border-radius: 10px;
@@ -76,16 +113,17 @@ body {
     color: #f4ebd6;
     gap: 0rem;
     margin-top: auto;
-    max-width: 900px;
-    background-color:rgba(27, 148, 118, 0.3) ;
+    max-width: 950px;
+    background-color: rgba(27, 148, 118, 0.3);
     border-radius: 10px;
-    padding: 10px;;
+    padding: 10px;
     text-shadow: (2px, 2px, 4px, rgba(0, 0, 0, 0.9));
+    font-weight: bold;
 }
 
 /* Titre */
 .movie-info h1 {
-    color:#f4ebd6;
+    color: #f4ebd6;
     margin-bottom: 0.5rem;
     font-weight: bold;
 }
@@ -123,6 +161,7 @@ body {
 #tagline {
     color: #f4ebd6;
 }
+
 /* Optionnel : scrollbar pour le synopsis
 #overview::-webkit-scrollbar {
     width: 6px;
@@ -147,123 +186,84 @@ h3 {
 }
 
 .container-acteurs {
-  max-width: 1200px;
-  margin: 50px auto;
-  padding: 2rem;
-
-    /* Sur petits écrans, positionner la barre de navigation en haut et centrer les éléments */
-    nav.navbar {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        z-index: 1050; /* au-dessus du contenu */
-
-        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-    }
-
-    /* Centrer le contenu de la navbar */
-    nav.navbar .container {
-        justify-content: center;
-    }
-
-    nav.navbar .navbar-collapse {
-        display: flex !important;
-        justify-content: center;
-    }
-
-    nav.navbar .navbar-nav {
-        display: flex;
-        flex-direction: row;
-        gap: 0.5rem;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-    }
-
-    /* Réduire la taille du logo sur mobile pour que tout tienne */
-    .navbar-brand img {
-        width: 60px;
-        height: auto;
-    }
-
-    /* Empêcher le contenu d'être masqué sous la nav fixe */
-    body {
-        padding-top: 110px; /* ajustez selon la hauteur effective de la navbar */
-    }
-  background-color: rgba(27, 148, 118, 0.15);
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    max-width: 1200px;
+    margin: 50px auto;
+    padding: 2rem;
+    border-radius: 10px;
+    border-color: solid 1px #333;
+    background: linear-gradient(308deg, rgba(18, 70, 96, 1) 46%, rgba(27, 148, 118, 0.315) 100%, rgba(199, 219, 194, 1) 93%);
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
+
 .container-acteurs h3 {
-  text-align: center;
-  color: #f4ebd6;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
+    text-align: center;
+    color: #f4ebd6;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
 }
 
 /* --- CONTENEUR DES CARTES --- */
 #cast-section {
-  display: flex;
-  gap: 20px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
 }
 
 /* Masquer la scrollbar sur les navigateurs Webkit (Chrome, Safari, Edge) */
 #cast-section::-webkit-scrollbar {
-  display: none;
+    display: none;
 }
 
 /* --- CARTES ACTEURS --- */
 .cast-card {
-  width: 260px;
-  background-color: rgba(244, 235, 214, 0.95); /* beige doux */
-  padding: 10px;
-  border-radius: 12px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 260px;
+    background-color: rgba(244, 235, 214, 0.95);
+    /* beige doux */
+    padding: 10px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 
 /* --- IMAGE DE L’ACTEUR --- */
 .cast-card img {
-  width: 100px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
+    width: 100px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 /* --- INFOS ACTEUR --- */
 .cast-card div {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 /* Nom acteur */
 .cast-card h5 {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 700;
-  color: #123;
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #123;
 }
 
 /* Rôle acteur */
 .cast-card p {
-  margin: 5px 0 0 0;
-  color: #333;
-  font-weight: 500;
-  font-size: 0.9rem;
+    margin: 5px 0 0 0;
+    color: #333;
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
 footer {
@@ -274,12 +274,39 @@ footer {
 
 /*VERSION RESPONSIVE*/
 
-@media ( max-width: 900px) {
-    .navbar{
-    position: fixed;
-    top: 0;
-    width: 100%;
-}
+@media (max-width: 900px) {
+
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1050;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+        text-align: center;
+
+    }
+
+    /* Centrer le contenu de la navbar */
+    .navbar .container {
+        justify-content: center;
+    }
+
+    .navbar .navbar-collapse {
+        justify-content: center;
+    }
+
+    .navbar-brand img {
+        width: 60px;
+        height: auto;
+        /* ajuste le logo */
+    }
+
     .container_movie {
         flex-direction: column;
         align-items: center;
@@ -302,9 +329,11 @@ footer {
     #overview {
         max-height: none;
     }
-    #movie-section{
+
+    #movie-section {
         background-position: center;
-        background-size: cover; /* ou "contain" selon le rendu désiré */
+        background-size: cover;
+        /* ou "contain" selon le rendu désiré */
         background-repeat: no-repeat;
     }
 }
