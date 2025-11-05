@@ -3,33 +3,57 @@
     padding: 0;
     box-sizing: border-box;
 }
+body {
+  color: #f4ebd6;
+  font-family: Arial, sans-serif;
+  margin: 0; 
+  padding-top: 80px; 
+}
 
+/*NAVBAR*/
+.logo{
+    width: 158px;
+    height: 158px;
+    background-color: #f4ebd6 !important;
+}
+.bg-body-tertiary {
+    background-color: rgba(18, 70, 96, 1) !important;
+    height: 80px;
+}
+.nav-link{
+    text-decoration: none;
+    color: #f4ebd6 !important;
+    font-size: 16px;
+}
+.navbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
 /* Conteneur principal */
 .container_movie {
     max-width: 1200px;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
     padding: 2rem;
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
     align-items: flex-start;
-     justify-content: center;
+    justify-content: center;
 }
 
 /* Section avec fond */
 #movie-section {
-    background-image: url('/bRm2DEgUiYciDw3myHuYFInD7la.jpg');
+    background-image: url('/icmmSD4vTTDKOq2vvdulafOGw93.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size:cover;
     background-position: center;
     width: 100%;
     max-width: 100%;
-    min-height: 40vh;
+    min-height: fit-content; /* occupe toute la hauteur visible */
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-     padding: 2rem 0;
 }
 
 /* Affiche du film */
@@ -53,14 +77,15 @@
     gap: 0rem;
     margin-top: auto;
     max-width: 900px;
-    background-color:rgba(244, 235, 214, 0.1) ;
+    background-color:rgba(27, 148, 118, 0.3) ;
     border-radius: 10px;
-    padding: 10px;
+    padding: 10px;;
+    text-shadow: (2px, 2px, 4px, rgba(0, 0, 0, 0.9));
 }
 
 /* Titre */
-.movie-info h2 {
-    color: #f4ebd6;
+.movie-info h1 {
+    color:#f4ebd6;
     margin-bottom: 0.5rem;
     font-weight: bold;
 }
@@ -121,66 +146,124 @@ h3 {
 
 }
 
-/* Conteneur cartes */
+.container-acteurs {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 2rem;
+
+    /* Sur petits écrans, positionner la barre de navigation en haut et centrer les éléments */
+    nav.navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1050; /* au-dessus du contenu */
+
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    /* Centrer le contenu de la navbar */
+    nav.navbar .container {
+        justify-content: center;
+    }
+
+    nav.navbar .navbar-collapse {
+        display: flex !important;
+        justify-content: center;
+    }
+
+    nav.navbar .navbar-nav {
+        display: flex;
+        flex-direction: row;
+        gap: 0.5rem;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Réduire la taille du logo sur mobile pour que tout tienne */
+    .navbar-brand img {
+        width: 60px;
+        height: auto;
+    }
+
+    /* Empêcher le contenu d'être masqué sous la nav fixe */
+    body {
+        padding-top: 110px; /* ajustez selon la hauteur effective de la navbar */
+    }
+  background-color: rgba(27, 148, 118, 0.15);
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.container-acteurs h3 {
+  text-align: center;
+  color: #f4ebd6;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* --- CONTENEUR DES CARTES --- */
 #cast-section {
-    display: flex;              /* cartes en ligne */
-    gap: 15px;
-    overflow-x: auto;           /* scroll horizontal */
-    overflow-y: hidden;         
-    padding-bottom: 10px;
-    -webkit-overflow-scrolling: touch; /* scroll fluide pour version mobile */
-    scroll-behavior: smooth;    /* scroll fluide (optionnel) */
-    -ms-overflow-style: none;   
-    scrollbar-width: none;      
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
 }
 
+/* Masquer la scrollbar sur les navigateurs Webkit (Chrome, Safari, Edge) */
 #cast-section::-webkit-scrollbar {
-    display: none;              /* Chrome, Safari, Opera */
+  display: none;
 }
 
-/* Cartes acteurs : image à gauche, texte à droite */
-#cast-section .cast-card {
-    display: flex;
-    flex: 0 0 auto;            
-    width: 329px;              
-    background-color: white;
-    padding: 10px;
-    border-radius: 10px;
-    align-items: center;
-    gap: 10px;              
+/* --- CARTES ACTEURS --- */
+.cast-card {
+  width: 260px;
+  background-color: rgba(244, 235, 214, 0.95); /* beige doux */
+  padding: 10px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Image à gauche */
+
+/* --- IMAGE DE L’ACTEUR --- */
 .cast-card img {
-    width: 120px;
-    height: 182px;
-    object-fit: cover;
-    border-radius: 10px;
+  width: 100px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
 }
 
-/* Texte (nom au-dessus, rôle en dessous) */
+/* --- INFOS ACTEUR --- */
 .cast-card div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: left;
 }
 
 /* Nom acteur */
 .cast-card h5 {
-    margin: 0;
-    font-size: 16px;
-    font-weight: 600;
-    color: black;
-    font-weight: bold;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #123;
 }
 
 /* Rôle acteur */
 .cast-card p {
-    margin: 5px 0 0 0;
-    color: #555;
-    font-weight: bold;
-    font-size: 14px;
-    text-align: center;
+  margin: 5px 0 0 0;
+  color: #333;
+  font-weight: 500;
+  font-size: 0.9rem;
 }
 
 footer {
@@ -191,7 +274,12 @@ footer {
 
 /*VERSION RESPONSIVE*/
 
-@media (max-width: 900px) {
+@media ( max-width: 900px) {
+    .navbar{
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
     .container_movie {
         flex-direction: column;
         align-items: center;
@@ -199,8 +287,10 @@ footer {
     }
 
     #poster {
-        max-width: 80%;
-        margin-left: 50px;
+        max-width: 100%;
+        margin: 0 auto;
+        justify-content: center;
+        display: block;
 
     }
 
@@ -213,6 +303,8 @@ footer {
         max-height: none;
     }
     #movie-section{
-        background-position:center;
+        background-position: center;
+        background-size: cover; /* ou "contain" selon le rendu désiré */
+        background-repeat: no-repeat;
     }
 }
