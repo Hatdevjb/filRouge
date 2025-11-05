@@ -179,7 +179,7 @@
         }
     }
 
-    /* Tablet breakpoint: for widths up to 800px place the sortie-info under the poster */
+    /* Tablet breakpoint: jusqu'a 800px place sortie-info sous le poster */
     @media (max-width: 800px) {
         .container_sortie {
             flex-direction: column;
@@ -187,13 +187,13 @@
             gap: 0.75rem;
         }
 
-        /* enlève   margin left et width-max pour que le poster soit centrer */
+        /* enlève margin left et width-max pour que le poster soit centrer */
         #posterSortie {
             margin-left: 0;
             max-width: 70%;
         }
 
-        /* make info full width (within the container) and add spacing */
+        /* passe en width 100% (dans sortie-conteneur) */
         .sortie-info {
             width: 100%;
             max-width: 900px;
