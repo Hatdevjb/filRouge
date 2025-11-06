@@ -51,7 +51,7 @@
 
     /* body */
 
-    /* carousel  */
+    /* --------------------------------------------CAROUSEL------------------------------------------ */
 
     .c-item {
         height: 56rem;
@@ -136,9 +136,14 @@
         font-weight: bolder;
     }
 
-    /* -----------------------------------DIV---CARTEFILM------------------------------- */
+    /*----------------------------SECTION-RESTPAGE---------------------------------*/
+   
+
+    /* -----------------------------------SECTION-PLUS-DE-FILM-(ancient section genre)---------------------------- */
+
+    /* conteneur de section plus de Films et couleur */
     .selectionGenre {
-        background-color: #124660;
+        background: linear-gradient(158deg, rgba(18, 70, 96, 1) 46%, rgba(27, 148, 118, 1) 100%, rgba(199, 219, 194, 1) 93%);
         padding: 2rem 0;
     }
 
@@ -164,7 +169,7 @@
         max-width: 80%;
         margin: 0 auto;
     }
-
+/*-------------------------------- conteneur de section carte--------------------------------------------- */
     .film-cards-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
