@@ -65,7 +65,7 @@
 
 
 
-    /* POSTER + INFO  */
+    /* ----------------------------------------------DIV POSTER + INFO ---------------------------------------- */
 
     .container_sortie{
         align-items: flex-start;
@@ -87,6 +87,7 @@
         object-fit: cover;
         display: block;
         flex: 0 0 auto;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
     }
 
     .sortie-info {
@@ -135,7 +136,7 @@
         font-weight: bolder;
     }
 
-    /* Section sélection par genre */
+    /* -----------------------------------DIV---CARTEFILM------------------------------- */
     .selectionGenre {
         background-color: #124660;
         padding: 2rem 0;
@@ -206,6 +207,7 @@
         font-size: 0.9rem;
         margin-bottom: 0.25rem;
     }
+/* ----------------------------------- MEDIA QUERIES ----------------------------------------------- */
 
     /* Small screens - centre la navbar et empile les éléments sous le toggler */
     @media (max-width: 768px) {
