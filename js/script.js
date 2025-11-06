@@ -36,7 +36,7 @@
             affiche.src = CONFIG.BASE_IMG_URL + CONFIG.POSTER_SIZE + movie.results[0].poster_path;
             titre.innerText = movie.results[0].title;
             dateS.innerText = formatDate(movie.results[0].release_date);
-            note.innerText = movie.results[0].vote_average;
+            note.innerText = (movie.results[0].vote_average).toFixed(1);
 
             // Remplir les deux autres carousels.
 
@@ -80,7 +80,7 @@
         .then(movie => {
             console.log(movie);
 
-            for (let i = 0; i < 12; i++) {       // 10 films Suivant.
+            for (let i = 0; i < 12; i++) {       // 12 films Suivant.
             const FILM = movie.results[i];
             let carteGenre = document.querySelector('.film-cards-container');
 
