@@ -74,7 +74,7 @@ body {
 
 /* BARRE DE RECHERCHE */
 .search-bar {
-  position: relative; /* ✅ indispensable pour que #suggestions soit bien placé sous l’input */
+  position: relative;
   width: 300px;
   display: flex;           
   align-items: center;     
@@ -87,11 +87,12 @@ body {
   overflow: visible;
   cursor: pointer;
   z-index: 1000; 
+  margin-top: 5px;
 }
 
 .search-bar:hover,
 .search-bar:focus-within {
-   width: 300px; /*deploiement de la barre de recherche au survol */
+   width: 300px; 
   background-color: rgba(244, 235, 214, 0.1);
   border: 1px solid #F4EBD6;
   border-radius: 20px;
@@ -125,6 +126,12 @@ body {
 .search-bar:focus-within input {
   opacity: 1;
 }
+/* icone loupe*/
+.navbar .search-bar i {
+    color: #F4EBD6;
+    font-size: 1.1rem;
+    margin-right: 8px;
+}
 
 /* DIV POUR LA BARRE DE RECHERCHE */
 #suggestions {
@@ -132,7 +139,7 @@ body {
     top: 100%;
     left: 0;
     right: 0;
-    background: white;
+    background: rgba(244, 235, 214, 1);
     border: 1px solid #ddd;
     border-radius: 8px;
     max-height: 500px;
@@ -144,29 +151,38 @@ body {
 
 .suggestElement {
     display: flex;
-    flex-direction: column;
+    flex-direction: row; /* côte à côte */
     align-items: center;
-    text-align: center;
-    padding: 15px;
+    padding: 10px 15px;
     cursor: pointer;
     border-radius: 8px;
     transition: all 0.3s;
-    background: white;
+    background: rgb(255, 255, 255);
+    gap: 10px;
 }
 
 .suggestElement:hover {
-    background-color: #f0f0f0;
-    transform: scale(1.05);
+    background-color:rgba(244, 235, 214, 1);
+    transform: scale(1.02);
 }
 
 .suggestElement img {
-    margin-bottom: 10px;
+    width: 50px;   /* taille fixe du poster */
+    height: 75px;
+    object-fit: cover;
+    border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.suggestElement span {
+.suggestElement .suggest-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.suggestElement .suggest-info span {
+    font-size: 0.9rem;
     color: #333;
-    line-height: 1.4;
 }
 
 /* -----------------CONTENEUR PRINCIPAL EN HAUT DE PAGE-------------- */
@@ -318,16 +334,12 @@ h3 {
     scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
 }
 
-/* Masquer la scrollbar sur les navigateurs Webkit (Chrome, Safari, Edge) */
-#cast-section::-webkit-scrollbar {
-    display: none;
-}
+
 
 /* --- CARTES ACTEURS --- */
 .cast-card {
     width: 260px;
     background-color: rgba(244, 235, 214, 0.95);
-    /* beige doux */
     padding: 10px;
     border-radius: 12px;
     display: flex;

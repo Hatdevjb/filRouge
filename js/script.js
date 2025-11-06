@@ -9,27 +9,27 @@ const options = {
 };
 
 //----------------- GÉNÉRATION D'UN FILM ALÉATOIRE -------------
-function getRandomMovie() {
-  // On choisit une page aléatoire de TMDB (de 1 à 500 max)
-  const randomPage = Math.floor(Math.random() * 50) + 1;
+// function getRandomMovie() {
+//   // On choisit une page aléatoire de TMDB (de 1 à 500 max)
+//   const randomPage = Math.floor(Math.random() * 50) + 1;
 
-  fetch(`https://api.themoviedb.org/3/discover/movie?language=fr-FR&page=${randomPage}`, options)
-    .then(result => {
-      if (!result.ok) throw new Error("Erreur récupération des films.");
-      return result.json();
-    })
-    .then(data => {
-      // Choisir un film aléatoire dans la page
-      const RandomMovie = Math.floor(Math.random() * data.results.length);
-      const idMovie = data.results[RandomMovie].id;
-      console.log("🎬 Film choisi aléatoirement :", data.results[RandomMovie].title);
+//   fetch(`https://api.themoviedb.org/3/discover/movie?language=fr-FR&page=${randomPage}`, options)
+//     .then(result => {
+//       if (!result.ok) throw new Error("Erreur récupération des films.");
+//       return result.json();
+//     })
+//     .then(data => {
+//       // Choisir un film aléatoire dans la page
+//       const RandomMovie = Math.floor(Math.random() * data.results.length);
+//       const idMovie = data.results[RandomMovie].id;
+//       console.log(" Film choisi aléatoirement :", data.results[RandomMovie].title);
 
-      // Charger les détails et les acteurs du film choisi
-      getMovieDetails(idMovie);
-      getMovieCredits(idMovie);
-    })
-    .catch(error => console.log("Erreur fetch random movie :", error));
-}
+//       // Charger les détails et les acteurs du film choisi
+//       getMovieDetails(idMovie);
+//       getMovieCredits(idMovie);
+//     })
+//     .catch(error => console.log("Erreur fetch random movie :", error));
+// }
 
 //------------------------ DETAILS FILM ---------------
 function getMovieDetails(idMovie) {
@@ -75,7 +75,6 @@ function getMovieDetails(idMovie) {
     .catch(error => console.log("Erreur fetch détails :", error));
 }
 
-//--------- ACTEURS----------
 function getMovieCredits(idMovie) {
   fetch(`https://api.themoviedb.org/3/movie/${idMovie}/credits?language=fr-FR`, options)
     .then(results => {
@@ -135,14 +134,14 @@ searchInput.addEventListener('input', function() {
           <img src="https://image.tmdb.org/t/p/w92${movie.poster_path}" 
                alt="${movie.title}" 
                style="width:40px;height:60px;object-fit:cover;border-radius:4px;">
-          <span>${movie.title}</span>
+                <span>${movie.title}</span>
         `;
 
-        // ✅ "click" au lieu de "keyup"
         div.addEventListener('click', () => {
           searchInput.value = movie.title;
           suggestions.innerHTML = '';
           suggestions.style.display = 'none';
+          window.location.href = `detaileFilm.html?id=${movie.id}`;
           getMovieDetails(movie.id);
           getMovieCredits(movie.id);
         });
@@ -164,6 +163,13 @@ document.addEventListener('click', e => {
   }
 });
 
+const paramUrl = new URLSearchParams(window.location.search);
+const idFilm = paramUrl.get('id');
+if (idFilm) {
+  getMovieDetails(idFilm);
+  getMovieCredits(idFilm);
+  
+}
 //----------GESTION MODE HORS LIGNE ET MAINTENANCE---------
 window.addEventListener("offline", () => {
   window.location.href = "horsligne.html";
@@ -174,7 +180,13 @@ window.addEventListener("load", () => {
   if (reparation) {
     window.location.href = "reparation.html";
   } else {
-    // 🎲 AU CHARGEMENT : afficher un film aléatoire
+    // AU CHARGEMENT : afficher un film aléatoire
     getRandomMovie();
   }
 });
+
+ // Formater une date au format français    
+    const formatDate = (dateStr) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateStr).toLocaleDateString('fr-FR', options);
+    };
