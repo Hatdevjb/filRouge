@@ -2,14 +2,15 @@
 
 // Appeler les JSON pour remplir les sections dynamiquement    
 
+// Déclaration des Constantes
 
-// Configuration des URLs d'images
-const CONFIG = {
-    BASE_IMG_URL: 'https://image.tmdb.org/t/p/',
-    POSTER_SIZE: 'w500',
-};
+    // Configuration des URLs d'images
+    const CONFIG = {
+        BASE_IMG_URL: 'https://image.tmdb.org/t/p/',
+        POSTER_SIZE: 'w500',
+    };
 
-const URL =  `./json/data.json`;
+    const URL =  `./json/data.json`;
 
 
     // GESTION CAROUSEL SORTIES DE LA SEMAINE
@@ -106,6 +107,7 @@ const URL =  `./json/data.json`;
 
 // ------------------------------------ Fonctions Utilitaires ------------------------------------
 
+    // Formater une date au format français    
     const formatDate = (dateStr) => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateStr).toLocaleDateString('fr-FR', options);
