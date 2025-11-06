@@ -4,33 +4,38 @@
     box-sizing: border-box;
 }
 
-    h1 {
-        color:aquamarine;
-    }
-
+   
     /* Navbar */
 
     .navbar > .container {
-        background-color: rgba(76, 82, 85, 0.4);
-        
+        background-color: rgba(18, 70, 96, 1);
+        max-width: 100%;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1;
     }
 
+    /* logo */
     .navbar > .container > a > img {
         background-color: #124660;
         border-color: #F4EBD6;
         border-style: solid; 
         border-width: 1.2px;
-        border-radius: 18px;
+        border-radius: 16px;
+        margin-left: 8rem;
     } 
 
-
+    /* Contenue de la navba (média querry à faire querry sur breakpoind bootstrap md)*/
     .navbar li .nav-link {
-        color: #F4EBD6; 
+        color: #F4EBD6;
+        margin-right: 2rem; 
     }
 
     .navbar li .nav-link:hover {
-        background-color: rgba(18, 70, 96, 0.4);
+        background-color: rgba(199, 219, 194, 0.5);
         border-radius: 16px;
+        transition-duration: 1ms;
     }
 
 
@@ -46,7 +51,227 @@
 
     /* body */
 
+    /* carousel  */
+
+    .c-item {
+        height: 56rem;
+        
+    }
+
+    .c-img {
+        height: 100%;
+        object-fit: cover;
+    }
 
 
-   
-    
+
+    /* POSTER + INFO  */
+
+    .container_sortie{
+        align-items: flex-start;
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: 5rem;
+        width: 100%;
+    }
+
+    #posterSortie {
+        margin-top: 2rem;
+        max-width: 350px; /* block le poster avant qu'il soit trop grand*/
+        width: auto; /* permet flex sizing */
+        margin-left: 5px;
+        height: auto;
+        border-radius: 10px;
+        object-fit: cover;
+        display: block;
+        flex: 0 0 auto;
+    }
+
+    .sortie-info {
+    background-color:rgba(18, 70, 96, 0.4) ;
+    border-radius: 10px;
+    color: #f4ebd6;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0%; /* permet a la column de grandire ou rappeticir */
+    gap: 0.5rem;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    min-width: 0;   /* permet aux child de géré le overflow/ */
+    padding: 10px;
+    position: relative;
+    z-index: 2;
+    }
+
+    /* Titre */
+    .sortie-info h2 {
+        color: #f4ebd6;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+
+    /* Textes */
+    .sortie-info p,
+    .sortie-info span {
+        font-size: 1rem;
+        color: #f4ebd6;
+        line-height: 1.5;
+    }
+
+    /* Genres */
+    .sortie-info #genres span {
+        margin-right: 5px;
+        padding: 0.2rem 0.5rem;
+        border: 1px solid bisque;
+        border-radius: 5px;
+        color: bisque;
+        font-size: 0.9rem;
+    }
+
+    /* Rating */
+    .rating {
+        font-weight: bolder;
+    }
+
+    /* Section sélection par genre */
+    .selectionGenre {
+        background-color: #124660;
+        padding: 2rem 0;
+    }
+
+    .genre-title-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding: 0 2rem;
+    }
+
+    .genre-title {
+        color: #f4ebd6;
+        font-size: 2rem;
+        margin: 0;
+        white-space: nowrap;
+    }
+
+    .title-line {
+        height: 2px;
+        background-color: rgba(27, 148, 118, 1);
+        flex-grow: 1;
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+    .film-cards-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1.5rem;
+        padding: 0 1rem;
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .film-card {
+        background-color: rgba(244, 235, 214, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+
+    .film-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .film-poster {
+        width: 100%;
+        aspect-ratio: 2/3;
+        object-fit: cover;
+    }
+
+    .film-info {
+        padding: 1rem;
+    }
+
+    .film-title {
+        color: #f4ebd6;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+
+    .film-date, .film-rating {
+        color: #f4ebd6;
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+    }
+
+    /* Small screens - centre la navbar et empile les éléments sous le toggler */
+    @media (max-width: 768px) {
+        /* Empile la brand, le toggler et le menu */
+        .navbar > .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Supprime la grosse marge du logo sur mobile */
+        .navbar > .container > a > img {
+            margin-left: 0;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Toggler centré et visible */
+        .navbar-toggler {
+            margin: 0;
+            align-self: center;
+        }
+
+        /* Le menu collapsé prend la largeur et son contenu est centré */
+        .navbar-collapse {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Les liens sont empilés et centrés sous le toggler */
+        .navbar-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.5rem 0;
+        }
+
+        .navbar-nav .nav-link {
+            margin-right: 0; /* annule la marge droite sur mobile */
+            padding: 0.4rem 0.6rem;
+        }
+    }
+
+    /* Tablet breakpoint: jusqu'a 800px place sortie-info sous le poster */
+    @media (max-width: 800px) {
+        .container_sortie {
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        /* enlève margin left et width-max pour que le poster soit centrer */
+        #posterSortie {
+            margin-left: 0;
+            max-width: 70%;
+        }
+
+        /* passe en width 100% (dans sortie-conteneur) */
+        .sortie-info {
+            width: 100%;
+            max-width: 900px;
+            margin-top: 0.75rem;
+        }
+
+        
+    }
+
