@@ -40,6 +40,33 @@ fetch(URL)
         dateS.innerText = formatDate(movie.results[0].release_date);
         note.innerText = movie.results[0].vote_average;
 
+        // Remplir les deux autres carousels.
+        let carouSuite = document.querySelector('.carousel-inner');
+
+        carouSuite.innerHTML += `
+        <div class="carousel-item c-item" data-bs-interval="2000">
+            <img src="${CONFIG.BASE_IMG_URL}original${movie.results[1].backdrop_path}" class="d-block w-100 c-img" alt="${movie.results[1].title}">
+            <div class="carousel-caption d-none d-md-block">    
+                <div class="container container_sortie" id="sortie-section">
+                    <img src="${CONFIG.BASE_IMG_URL}${CONFIG.POSTER_SIZE}${movie.results[1].poster_path}"
+                            id="posterSortie" alt="Affiche de ${movie.results[1].title}">
+                    <div class="sortie-info">
+                        <h2 id="titreS">${movie.results[1].title}</h2>  
+                        <p><strong>Date de sortie :</strong> <span id="release-date">
+                            ${formatDate(movie.results[1].release_date)}</span></p>
+                        <p class="sortieRating">⭐ <span id="idSortieRating">
+                            ${movie.results[1].vote_average.toFixed(1)}</span> / 10</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `;
+
+
+        // for (let i = 1; i < 3; i++) { // 2  films Suivant.
+        //     const film = movie.results[i];
+
+
     })
 
     .catch(error => {
@@ -53,4 +80,3 @@ fetch(URL)
         return new Date(dateStr).toLocaleDateString('fr-FR', options);
     };
 
-    
