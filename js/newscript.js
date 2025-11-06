@@ -53,7 +53,6 @@ const generateCarouselItem = (movie, index) => {
                         </div>
                         <p><strong>Date de sortie :</strong> <span id="release-date">
                             ${formatDate(movie.release_date)}</span></p>
-                        <p id="overview" class="mtS-3">${movie.overview}</p>
                         <p class="sortieRating">⭐ <span id="idSortieRating">
                             ${movie.vote_average.toFixed(1)}</span> / 10</p>
                     </div>
