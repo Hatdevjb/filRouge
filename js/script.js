@@ -314,8 +314,7 @@
     if (reparation) {
         window.location.href = "reparation.html";
     } else {
-        // AU CHARGEMENT : afficher un film aléatoire
-        getRandomMovie();
+        console.log("Site opérationnel");
     }
     });
 
