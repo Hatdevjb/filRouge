@@ -10,11 +10,19 @@
         POSTER_SIZE: 'w500',
     };
 
-    const URL =  `./json/data.json`;
+    // URL code API_TMDB
 
+    const VOTRE_CLE = '4f7d446c4d28ed77919842eb8153bbd0';
+
+    // URL TMDB - films de la semaine
+    const URL_FILM_SEMAINE =  `https://api.themoviedb.org/3/movie/now_playing?api_key=${VOTRE_CLE}&language=fr-FR&region=FR`;
+    
+    // URL TMDB - autres films
+ 
+    const URL = `https://api.themoviedb.org/3/discover/movie?api_key=${VOTRE_CLE}&language=fr-FR&region=FR`;
 
     // GESTION CAROUSEL SORTIES DE LA SEMAINE
-    fetch(URL)
+    fetch(URL_FILM_SEMAINE)
         .then(result => {
             if (!result.ok) throw new Error("oups, erreur carouselle initialisataion details.json");
             return result.json();
