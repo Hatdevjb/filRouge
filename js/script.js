@@ -1,5 +1,6 @@
 "use strict";
 
+//------------------------ FETCH OPTIONS ---------------
 const options = {
   method: 'GET',
   headers: {
@@ -8,28 +9,6 @@ const options = {
   }
 };
 
-//----------------- GÉNÉRATION D'UN FILM ALÉATOIRE -------------
-// function getRandomMovie() {
-//   // On choisit une page aléatoire de TMDB (de 1 à 500 max)
-//   const randomPage = Math.floor(Math.random() * 50) + 1;
-
-//   fetch(`https://api.themoviedb.org/3/discover/movie?language=fr-FR&page=${randomPage}`, options)
-//     .then(result => {
-//       if (!result.ok) throw new Error("Erreur récupération des films.");
-//       return result.json();
-//     })
-//     .then(data => {
-//       // Choisir un film aléatoire dans la page
-//       const RandomMovie = Math.floor(Math.random() * data.results.length);
-//       const idMovie = data.results[RandomMovie].id;
-//       console.log(" Film choisi aléatoirement :", data.results[RandomMovie].title);
-
-//       // Charger les détails et les acteurs du film choisi
-//       getMovieDetails(idMovie);
-//       getMovieCredits(idMovie);
-//     })
-//     .catch(error => console.log("Erreur fetch random movie :", error));
-// }
 
 //------------------------ DETAILS FILM ---------------
 function getMovieDetails(idMovie) {
@@ -59,7 +38,7 @@ function getMovieDetails(idMovie) {
         ? `url('https://image.tmdb.org/t/p/original${movie.backdrop_path}')`
         : "none";
       overview1.textContent = movie.overview;
-      releaseDate1.textContent = movie.release_date || "Date inconnue";
+      releaseDate1.textContent = formatDate(movie.release_date)|| "Date inconnue";
       runtime1.textContent = movie.runtime ? `${movie.runtime} min` : "Durée inconnue";
       rating1.textContent = movie.vote_average ? movie.vote_average.toFixed(1) : "N/A";
       tagline1.textContent = movie.tagline || "";
@@ -81,7 +60,34 @@ function getMovieCredits(idMovie) {
       if (!results.ok) throw new Error("Erreur credits.json");
       return results.json();
     })
-    .then(data => {
+    .then(data => { // CREATION DIVRÉALISATEUR ET SCÉNARISTE
+      const realisateurs = data.crew.find(person => person.job === "Director");
+      const directeur = data.crew.find(person => person.job ==="Writer");
+
+      const ratingP = document.querySelector('.rating');
+      let divCrew = document.getElementById('crew-info');
+
+      if (!divCrew){
+        divCrew = document.createElement('div');
+        divCrew.id = 'crew-info';
+        divCrew.style.marginBottom = '15px';
+        ratingP.parentNode.insertBefore(divCrew, ratingP);
+
+      }
+      divCrew.innerHTML = '';
+      
+      if (realisateurs) {
+        const textRealisateur  = document.createElement('p');
+        textRealisateur.textContent = `Réalisateur : ${realisateurs.name}`;
+        divCrew.appendChild(textRealisateur);
+      }
+
+      if (directeur) {
+        const textDirecteur = document.createElement('p');
+        textDirecteur.textContent = `Scénariste : ${directeur.name}`;
+        divCrew.appendChild(textDirecteur);
+      }
+
       const acteurs = data.cast.slice(0, 10);
       const castSection = document.getElementById('cast-section');
       castSection.innerHTML = "";
@@ -100,6 +106,7 @@ function getMovieCredits(idMovie) {
         castSection.appendChild(div);
       });
     })
+  
     .catch(err => console.log("Erreur acteurs :", err));
 }
 
@@ -163,12 +170,13 @@ document.addEventListener('click', e => {
   }
 });
 
+//----------RÉCUPÉRATION ID FILM DANS URL + BARRE DE RECHERCHE FONCTIONNEL SUR TOUT LE SITE---------
 const paramUrl = new URLSearchParams(window.location.search);
 const idFilm = paramUrl.get('id');
 if (idFilm) {
   getMovieDetails(idFilm);
   getMovieCredits(idFilm);
-  
+
 }
 //----------GESTION MODE HORS LIGNE ET MAINTENANCE---------
 window.addEventListener("offline", () => {
@@ -190,3 +198,5 @@ window.addEventListener("load", () => {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return new Date(dateStr).toLocaleDateString('fr-FR', options);
     };
+
+

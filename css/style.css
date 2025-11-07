@@ -332,6 +332,7 @@ h3 {
     -webkit-overflow-scrolling: touch;
     scrollbar-width: thin;
     scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+    padding: 10px;
 }
 
 
@@ -468,12 +469,16 @@ footer {
 
   /* Cast section */
   #cast-section {
-    justify-content: center;
     overflow-x: auto;   
     flex-wrap: nowrap;
+    justify-content: space-between;
   }
   .cast-card {
     min-width: 220px;
   }
 
 }
+
+
+
+
