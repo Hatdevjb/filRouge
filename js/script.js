@@ -23,9 +23,10 @@
             console.log(movie);
 
             // recupération des éléments html
-
+            
             let fondCarou = document.getElementById('backgroundCarou');
             let affiche = document.getElementById('posterSortie');
+            let lienId = document.getElementById('lienPosterC1');
             let titre = document.getElementById('titreS');
             let dateS = document.getElementById('release-date');
             let note = document.getElementById('idSortieRating');
@@ -36,7 +37,8 @@
             affiche.src = CONFIG.BASE_IMG_URL + CONFIG.POSTER_SIZE + movie.results[0].poster_path;
             titre.innerText = movie.results[0].title;
             dateS.innerText = formatDate(movie.results[0].release_date);
-            note.innerText = (movie.results[0].vote_average).toFixed(1);
+            note.innerText = (movie.results[0].vote_average).toFixed(1);   
+            lienId.href = `detaileFilm.html?id=${movie.results[0].id}`;
 
             // Remplir les deux autres carousels.
 
@@ -49,8 +51,9 @@
                 <img src="${CONFIG.BASE_IMG_URL}original${FILM.backdrop_path}" class="d-block w-100 c-img" alt="${FILM.title}">
                 <div class="carousel-caption d-none d-md-block">    
                     <div class="container container_sortie" id="sortie-section">
-                        <img src="${CONFIG.BASE_IMG_URL}${CONFIG.POSTER_SIZE}${FILM.poster_path}"
-                                id="posterSortie" alt="Affiche de ${FILM.title}">
+                        <a href="detaileFilm.html?id=${FILM.id}" id="lienPosterC${i+1}"> 
+                        <img src="${CONFIG.BASE_IMG_URL}${CONFIG.POSTER_SIZE}${FILM.poster_path}"id="posterSortie" alt="Affiche de ${FILM.title}">
+                        </a>
                         <div class="sortie-info">
                             <h2 id="titreS">${FILM.title}</h2>  
                             <p><strong>Date de sortie :</strong> <span id="release-date">
@@ -85,6 +88,7 @@
             let carteGenre = document.querySelector('.film-cards-container');
 
             carteGenre.innerHTML += ` <div class="film-card">
+                    <a href="detaileFilm.html?id=${FILM.id}" id="lienCartePlusdeFilms${i+1}">
                     <img src="${CONFIG.BASE_IMG_URL}${CONFIG.POSTER_SIZE}${FILM.poster_path}" class="film-poster" alt="Poster de ${FILM.title}">
                     <div class="film-info">
                         <h3 class="film-title">${FILM.title}</h3>
