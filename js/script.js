@@ -199,4 +199,4 @@ window.addEventListener("load", () => {
         return new Date(dateStr).toLocaleDateString('fr-FR', options);
     };
 
-
+    
