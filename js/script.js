@@ -47,7 +47,7 @@
             let carouSuite = document.querySelector('.carousel-inner');
 
             carouSuite.innerHTML += `
-            <div class="carousel-item c-item" data-bs-interval="2000">
+            <div class="carousel-item c-item" data-bs-interval="5000">
                 <img src="${CONFIG.BASE_IMG_URL}original${FILM.backdrop_path}" class="d-block w-100 c-img" alt="${FILM.title}">
                 <div class="carousel-caption d-none d-md-block">    
                     <div class="container container_sortie" id="sortie-section">
