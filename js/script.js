@@ -1,6 +1,17 @@
 "use strict";
 
-//----------PARTIE POUR LA BARRE DE RECHERCHE---------
+//------------------------ FETCH OPTIONS --------------- (pour clef api)
+    const options = {
+    method: 'GET',
+    headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDhhMTFiN2ExOWRkNjlmYzY2MmMxNjRhNDc3NDRiYSIsIm5iZiI6MTc2MjM0OTkxNy42NjMsInN1YiI6IjY5MGI1MzVkNzU1ZjVlYzAwYzA3MGZhYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jrqifYSqq5Tl_4F9xEIEW8gx2nSFDocGxlJdvNahipE'
+    }
+    };
+
+
+//----------PARTIE POUR LA BARRE DE RECHERCHE------------
+
     const searchBar = document.querySelector('.search-bar');
     const searchInput = document.getElementById('search-input');
     const suggestions = document.getElementById('suggestions');
@@ -182,15 +193,6 @@
         });
 
 //------------------------ DETAILS FILM---------------------------------------
-
-//------------------------ FETCH OPTIONS --------------- (pour clef api)
-    const options = {
-    method: 'GET',
-    headers: {
-        accept: 'application/json',
-        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxMDhhMTFiN2ExOWRkNjlmYzY2MmMxNjRhNDc3NDRiYSIsIm5iZiI6MTc2MjM0OTkxNy42NjMsInN1YiI6IjY5MGI1MzVkNzU1ZjVlYzAwYzA3MGZhYyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jrqifYSqq5Tl_4F9xEIEW8gx2nSFDocGxlJdvNahipE'
-    }
-    };
 
 
     function getMovieDetails(idMovie) {
