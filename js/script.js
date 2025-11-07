@@ -177,6 +177,7 @@
             carteGenre.innerHTML += ` <div class="film-card">
                     <a href="detaileFilm.html?id=${FILM.id}" id="lienCartePlusdeFilms${i+1}">
                     <img src="${CONFIG.BASE_IMG_URL}${CONFIG.POSTER_SIZE}${FILM.poster_path}" class="film-poster" alt="Poster de ${FILM.title}">
+                    </a>
                     <div class="film-info">
                         <h3 class="film-title">${FILM.title}</h3>
                         <p class="film-date">Date de sortie : <span>${formatDate(FILM.release_date)}</span></p>
