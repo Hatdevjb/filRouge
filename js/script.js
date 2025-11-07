@@ -10,8 +10,7 @@
         POSTER_SIZE: 'w500',
     };
 
-    // URL code API_TMDB
-
+    // Code pour API_TMDB
     const VOTRE_CLE = '4f7d446c4d28ed77919842eb8153bbd0';
 
     // URL TMDB - films de la semaine
