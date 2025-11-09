@@ -17,6 +17,20 @@ body {
       margin-bottom: 2rem;
       font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
     }
+
+    .btn {
+      background-color: #F4EBD6;
+      color: #124660;
+      padding: 10px 20px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+    .btn:hover {
+      background-color: #e0d2b5;
+    }
+    
 /*Design d'une télévision généré par Uiverse.io*/
 .tv-container {
   display: flex;
