@@ -136,7 +136,7 @@
             carouSuite.innerHTML += `
             <div class="carousel-item c-item" data-bs-interval="5000">
                 <img src="${CONFIG.BASE_IMG_URL}original${FILM.backdrop_path}" class="d-block w-100 c-img" alt="${FILM.title}">
-                <div class="carousel-caption d-none d-md-block">    
+                <div class="carousel-caption d-md-block">    
                     <div class="container container_sortie" id="sortie-section">
                         <a href="detaileFilm.html?id=${FILM.id}" id="lienPosterC${i+1}"> 
                         <img src="${CONFIG.BASE_IMG_URL}${CONFIG.POSTER_SIZE}${FILM.poster_path}"id="posterSortie" alt="Affiche de ${FILM.title}">
