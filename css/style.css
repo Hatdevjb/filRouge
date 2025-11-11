@@ -454,8 +454,33 @@
 
 /* ----------------------------------- MEDIA QUERIES ----------------------------------------------- */
 
+    
+
+    /* Tablet breakpoint: jusqu'a 800px place sortie-info sous le poster */
+    @media (max-width: 800px) {
+        .container_sortie {
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 0 1rem;
+        }
+
+        #posterSortie {
+            margin: 1rem auto 0;
+            max-width: 60%;
+            min-width: 250px;
+        }
+
+        .sortie-info {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 1rem;
+            padding: 1rem;
+        }
+    }
+
     /* Small screens - centre la navbar et empile les éléments sous le toggler */
-    @media (max-width: 768px) {
+    @media (max-width: 600px) {
         /* Empile la brand, le toggler et le menu */
         .navbar > .container {
             display: flex;
@@ -469,6 +494,7 @@
         .navbar > .container > a > img {
             margin-left: 0;
             margin-bottom: 0.25rem;
+            margin-left: 4rem;
         }
 
         /* Toggler centré et visible */
@@ -494,30 +520,8 @@
 
         .navbar-nav .nav-link {
             margin-right: 0; /* annule la marge droite sur mobile */
+            margin-left: 3rem; /* ajoute une marge gauche pour centrer les liens */
             padding: 0.4rem 0.6rem;
-        }
-    }
-
-    /* Tablet breakpoint: jusqu'a 800px place sortie-info sous le poster */
-    @media (max-width: 800px) {
-        .container_sortie {
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            padding: 0 1rem;
-        }
-
-        #posterSortie {
-            margin: 1rem auto 0;
-            max-width: 60%;
-            min-width: 250px;
-        }
-
-        .sortie-info {
-            width: 100%;
-            max-width: 800px;
-            margin-top: 1rem;
-            padding: 1rem;
         }
     }
 
