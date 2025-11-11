@@ -3,48 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index</title>
-
+    <title>JBI Stream 1</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  
+    <link rel="icon" type="image/png" href="./images/Image.png">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/6c5bf009e7.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light">
-        <div class="container justify-content-center">
-            <a class="navbar-brand" href="#mainNav">
-                <img src="img/LogoJBI.png" alt="Logo JBI" width="65" height="50" class="d-inline-block align-text-top">
+    <!-- navbar2.0 -->
+   <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/Image.png" alt="Logo JBI" width="100" height="100">
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse flex-grow-0" id="navbarNav">
                 <ul class="navbar-nav text-center">
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Accueil</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Films</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Genre</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="#">Favoris</a>
-                    </li>
-                </ul>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="films.html">Films</a></li>
+                </ul> 
+            </div>
+            <!-- Barre de recherche -->
+            <div class="search-bar" style="position: relative;">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" id="search-input" placeholder="Rechercher un film...">
+                <div id="suggestions"></div>
             </div>
         </div>
     </nav>
- 
-    <h1>helloWorld</h1>
-
     
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <!-- carousel -->
+     <div id="carouSortiSemaine" class="carousel carousel-light slide">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouSortiSemaine" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouSortiSemaine" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouSortiSemaine" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">    
+            <div class="carousel-item active c-item" data-bs-interval="10000">      <!-- contenue complété par JS -->
+                <img src="" id="backgroundCarou" class="d-block w-100 c-img" alt="backgroundFilm">
+                <div class="carousel-caption d-lg-block">
+                    <div class="container container_sortie" id="sortie-section">
+                        <a href="" id="lienPosterC1"> 
+                        <img src="" id="posterSortie" alt="Affiche du film">
+                        </a>
+                        <div class="sortie-info">
+                            <h2 id="titreS"></h2>
+                            <div id="Sortie_genres" class="myS-2"></div>
+                            <p><strong>Date de sortie : </strong><span id="release-date"></span></p>
+                            <p class="sortieRating"> ⭐ <span id="idSortieRating"></span> / 10</p>
+                        </div>
+                    </div>         
+                </div>
+            </div>
+            <!-- Les 2 slide suivant des films du la semaine seront insérées ici par JavaScript    -->
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouSortiSemaine" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouSortiSemaine" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    
+    <section class="restPage">
+        <!-- Section Films d'Animation -->
+        <section class="selectionGenre container-fluid py-5">
+            <div class="genre-title-container">
+                <h2 class="genre-title">Plus de Films</h2>
+                <div class="title-line"></div>
+            </div>
+            <div class="film-cards-container">       
+                <!-- Les cartes de films seront insérées ici par JavaScript -->
+
+                
+            </div>
+        </section>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <a class="footer-logo" href="index.html">
+            <img src="images/Image.png" alt="Logo JBI" width="100" height="100">
+        </a>
+        <p class="Mention">Mention Légal</p>
+        <p class="reseaux">Nos reseaux: 
+            <a href="https://github.com/INaciri76/git_ivan_et_inene.git"><i class="fa-brands fa-github"></i></a>
+        </p>
+        <div class="title-line"></div>
+        <p class="copyright">© Copyrights 2025, All Rights Reserved by JBI.Inc</p>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

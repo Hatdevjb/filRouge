@@ -1,37 +1,54 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+/* ----------------------------------------------------INDEX--(JBI-Stream)-----------------------------------------------------------   */
 
-    h1 {
-        color:aquamarine;
-    }
-
+/*NAVBAR*/
     /* Navbar */
 
-    .navbar > .container {
-        background-color: rgba(76, 82, 85, 0.4);
-        
+    .navbar>.container {
+        background-color: rgba(18, 70, 96, 1);
+        max-width: 100%;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 4;
+        margin: 0;
     }
 
-    .navbar > .container > a > img {
+    /* logo */
+    .navbar>.container>a>img {
         background-color: #124660;
-        border-color: #F4EBD6;
-        border-style: solid; 
-        border-width: 1.2px;
-        border-radius: 18px;
-    } 
+        border-color: #f4ebd686;
+        padding: 3px;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 16px;
+        margin-left: 8rem;
+        max-width: 100%;
+        width: 50%;
+        height: 4rem;
+    }
 
+    .navbar .navbar-brand {
+    margin-right: 2rem;
+    }
 
+    /* Contenue de la navbar*/
     .navbar li .nav-link {
-        color: #F4EBD6; 
+        color: #F4EBD6;
+        margin-right: 3rem;
+        font-weight: bold;
     }
 
     .navbar li .nav-link:hover {
-        background-color: rgba(18, 70, 96, 0.4);
+        background-color: rgba(199, 219, 194, 0.5);
         border-radius: 16px;
+        transition-duration: 1ms;
     }
+
 
 
     /* couleur du toggler buton en mobile  */
@@ -44,9 +61,826 @@
         border: 1px solid #F4EBD6
     }
 
-    /* body */
+    .search-bar {
+        display: inline-block;
+        margin-top: 20px;
+        justify-content: center;
+    }
+
+    /* BARRE DE RECHERCHE */
+    .search-bar {
+    position: relative;
+    width: 300px;
+    display: flex;           
+    align-items: center;     
+    justify-content: center; 
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 20px;
+    padding: 5px 8px;
+    transition: all 0.4s ease;
+    overflow: visible;
+    cursor: pointer;
+    z-index: 1000; 
+    margin-top: 5px;
+    }
+
+    .search-bar:hover,
+    .search-bar:focus-within {
+    width: 300px; 
+    background-color: rgba(244, 235, 214, 0.1);
+    border: 1px solid #F4EBD6;
+    border-radius: 20px;
+    padding: 5px 10px;
+    }
+
+    #suggestions {
+        display: none;
+        position: absolute; 
+        top: 100%; 
+        left: 0;
+        width: 100%; 
+        background-color: #124660;
+        border-radius: 0 0 8px 8px;
+        overflow: hidden;
+        z-index: 1000;
+    }
+
+    .search-bar input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: #F4EBD6;
+    outline: none;
+    font-size: 1rem;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    }
+
+    .search-bar:hover input,
+    .search-bar:focus-within input {
+    opacity: 1;
+    }
+ /* icone loupe*/
+    .navbar .search-bar i {
+        color: #F4EBD6;
+        font-size: 1.1rem;
+        margin-right: 8px;
+    }
+
+/* DIV POUR LA BARRE DE RECHERCHE */
+    #suggestions {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(244, 235, 214, 1);
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        max-height: 500px;
+        overflow-y: auto;
+        z-index: 2000;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        margin-top: 10px;
+    }
+
+    .suggestElement {
+        display: flex;
+        flex-direction: row; /* côte à côte */
+        align-items: center;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: all 0.3s;
+        background: rgb(255, 255, 255);
+        gap: 10px;
+    }
+
+    .suggestElement:hover {
+        background-color:rgba(244, 235, 214, 1);
+        transform: scale(1.02);
+    }
+
+    .suggestElement img {
+        width: 50px;   /* taille fixe du poster */
+        height: 75px;
+        object-fit: cover;
+        border-radius: 4px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .suggestElement .suggest-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .suggestElement .suggest-info span {
+        font-size: 0.9rem;
+        color: #333;
+    }
+
+/* --------------------------------------------CAROUSEL------------------------------------------ */
+
+    .c-item {
+        height: 56rem;
+        
+    }
+
+    .c-img {
+        height: 100%;
+        object-fit: cover;
+    }
 
 
+
+/* --DIV POSTER + INFO -------------- */
+
+    .container_sortie {
+        align-items: flex-start;
+        display: flex;
+        gap: 1rem;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        margin-bottom: 5rem;
+        width: 100%;
+        z-index: 2;
+    }
+
+    #posterSortie {
+        margin-top: 2rem;
+        max-width: 350px; /* block le poster avant qu'il soit trop grand*/
+        width: auto; /* permet flex sizing */
+        margin-left: 5px;
+        height: auto;
+        border-radius: 10px;
+        object-fit: cover;
+        display: block;
+        flex: 0 0 auto;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+        z-index: 2;
+    }
+
+    .sortie-info {
+    background-color:rgba(18, 70, 96, 0.5) ;
+    border-radius: 10px;
+    color: #f4ebd6;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 0%; /* permet a la column de grandire ou rappeticir */
+    gap: 0.5rem;
+    justify-content: flex-start;
+    margin-top: 2rem;
+    min-width: 0;   /* permet aux child de géré le overflow/ */
+    padding: 10px;
+    /* position: relative; */
+    z-index: 1;
+    }
+
+    /* Titre */
+    .sortie-info h2 {
+        color: #f4ebd6;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+
+    /* Textes */
+    .sortie-info p,
+    .sortie-info span {
+        font-size: 1rem;
+        color: #f4ebd6;
+        line-height: 1.5;
+    }
+
+    /* Genres */
+    .sortie-info #genres span {
+        margin-right: 5px;
+        padding: 0.2rem 0.5rem;
+        border: 1px solid bisque;
+        border-radius: 5px;
+        color: bisque;
+        font-size: 0.9rem;
+    }
+
+    /* Rating */
+    .rating {
+        font-weight: bolder;
+    }
+
+/* -----------------------------------SECTION-PLUS-DE-FILM-(ancient section genre)---------------------------- */
+
+    /* conteneur de section plus de Films et couleur */
+    .selectionGenre {
+        background: linear-gradient(158deg, rgba(18, 70, 96, 1) 46%, rgba(27, 148, 118, 1) 100%, rgba(199, 219, 194, 1) 93%);
+        padding: 2rem 0;
+    }
+
+    .genre-title-container {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 2rem;
+        padding: 0 2rem;
+    }
+
+    .genre-title {
+        color: #f4ebd6;
+        font-size: 2rem;
+        margin: 0;
+        white-space: nowrap;
+    }
+
+    .title-line {
+        height: 2px;
+        background-color: rgba(27, 148, 118, 1);
+        flex-grow: 1;
+        max-width: 80%;
+        margin: 0 auto;
+    }
+
+/*-------------------------------- conteneur de section carte--------------------------------------------- */
+
+    .film-cards-container {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(244, 235, 214, 0.4) transparent;
+        padding: 0.6rem;
+    }
+
+    /* Masquer la scrollbar sur les navigateurs Webkit (Chrome, Safari, Edge) */
+    #film-section::-webkit-scrollbar {
+        display: none;
+    }
+
+    .film-card {
+        background-color: rgba(244, 235, 214, 0.2);
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+        width: 180px;
+        min-width: 170px;
+        gap: 12px;
+        
+    }
+
+    .film-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .film-poster {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    .film-info {
+        padding: 1rem;
+    }
+
+    .film-title {
+        color: #f4ebd6;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+
+    .film-date, .film-rating {
+        color: #f4ebd6;
+        font-size: 0.9rem;
+        margin-bottom: 0.25rem;
+    }
+
+/* ---------------------------------FOOTER------------------------------------------- */
+    /* Footer */
+
+    .footer {
+        background-color: rgba(18, 70, 96, 1);
+        max-width: 100%;
+        width: 100%;
+        margin: 0;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: auto 1fr auto; /* logo | centre | réseaux */
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 2rem;
+    }
+
+    /* logo footer */
+    .footer .footer-logo img {
+        background-color: #124660;
+        border: 2px solid #f4ebd686;
+        padding: 3px;
+        border-radius: 12px;
+        max-width: 100%;
+        width: 4rem;
+        height: auto;
+        display: block;
+        justify-self: start;
+    }
+
+    /* Paragraphe du centre (Mention Légal) */
+    .footer .Mention {
+        justify-self: center;
+        text-align: center;
+        color: #F4EBD6;
+        font-size: 0.95rem;
+        margin: 0;
+    }
+
+    /* Paragraphe réseaux (à droite) */
+    .footer .reseaux {
+        justify-self: end;
+        text-align: right;
+        color: #F4EBD6;
+        font-size: 0.95rem;
+        margin: 0;
+    }
+
+    /* règle générale pour les p du footer */
+    .footer p {
+        color: #F4EBD6;
+        font-size: 0.9rem;
+        margin: 0.2rem 0;
+    }
+
+    /* ligne et copyright sur toute la largeur en dessous */
+    .footer .title-line {
+        grid-column: 1 / -1;
+        height: 2px;
+        background-color: rgba(27, 148, 118, 1);
+        margin: 0.5rem 1;
+        width: 100%;
+    }
+
+    .footer .copyright {
+        grid-column: 1 / -1;
+        text-align: center;
+        margin-top: 0.25rem;
+        margin-bottom: 0.25rem;
+    }
+
+    /* Responsive : empile les éléments sur petits écrans */
+    @media (max-width: 600px) {
+        .footer {
+            grid-template-columns: 1fr;
+            text-align: center;
+            padding: 1rem;
+            gap: 0.5rem;
+        }
+
+        .footer .footer-logo img {
+            width: 5rem;
+            justify-self: center;
+        }
+
+        .footer .Mention,
+        .footer .reseaux {
+            justify-self: center;
+            text-align: center;
+        }
+
+        .footer .title-line,
+        .footer .copyright {
+            grid-column: 1 / -1;
+        }
+    }
+
+/* ----------------------------------- MEDIA QUERIES ----------------------------------------------- */
+
+    
+
+    /* Tablet breakpoint: jusqu'a 800px place sortie-info sous le poster */
+    @media (max-width: 800px) {
+        .container_sortie {
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            padding: 0 1rem;
+        }
+
+        #posterSortie {
+            margin: 1rem auto 0;
+            max-width: 60%;
+            min-width: 250px;
+        }
+
+        .sortie-info {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 1rem;
+            padding: 1rem;
+        }
+    }
+
+    /* Small screens - centre la navbar et empile les éléments sous le toggler */
+    @media (max-width: 600px) {
+        /* Empile la brand, le toggler et le menu */
+        .navbar > .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.5rem 1rem;
+        }
+
+        /* Supprime la grosse marge du logo sur mobile */
+        .navbar > .container > a > img {
+            margin-left: 0;
+            margin-bottom: 0.25rem;
+            margin-left: 4rem;
+        }
+
+        /* Toggler centré et visible */
+        .navbar-toggler {
+            margin: 0;
+            align-self: center;
+        }
+
+        /* Le menu collapsé prend la largeur et son contenu est centré */
+        .navbar-collapse {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Les liens sont empilés et centrés sous le toggler */
+        .navbar-nav {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.5rem 0;
+        }
+
+        .navbar-nav .nav-link {
+            margin-right: 0; /* annule la marge droite sur mobile */
+            margin-left: 3rem; /* ajoute une marge gauche pour centrer les liens */
+            padding: 0.4rem 0.6rem;
+        }
+    }
+
+    /* Extra small devices (phones, 480px and down) */
+    @media (max-width: 480px) {
+        .container_sortie {
+            padding: 0 0.5rem;
+            margin-bottom: 3rem;
+        }
+
+        #posterSortie {
+            max-width: 85%;
+            min-width: 200px;
+            margin: 1rem auto 0;
+        }
+
+        .sortie-info {
+            padding: 0.75rem;
+            margin-top: 0.75rem;
+        }
+
+        .sortie-info h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .sortie-info p,
+        .sortie-info span {
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+    }
+
+    /* iPhone SE and similar very small devices */
+    @media (max-width: 375px) {
+        .container_sortie {
+            gap: 0.5rem;
+            padding: 0 0.25rem;
+        }
+
+        #posterSortie {
+            max-width: 95%;
+            min-width: 180px;
+        }
+
+        .sortie-info {
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .sortie-info h2 {
+            font-size: 1.1rem;
+        }
+
+        .sortie-info p,
+        .sortie-info span {
+            font-size: 0.85rem;
+            line-height: 1.3;
+        }
+    }
+
+
+/* ----------------------------------------------------DETAIL-FILM-----------------------------------------------------------   */
+
+
+    body {
+        background-color: #f4ebd6;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding:inherit ;
+    }
+
+
+/* -----------------CONTENEUR PRINCIPAL EN HAUT DE PAGE-------------- */
+    .container_movie {
+        max-width: 1200px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    /* Section avec fond */
+    #movie-section {
+        background-image: url('/icmmSD4vTTDKOq2vvdulafOGw93.jpg');
+        background-repeat: no-repeat;
+        background-size:cover;
+        background-position: center;
+        backdrop-filter: brightness(5%);
+        width: 100%;
+        max-width: 100%;    display: flex;
+        justify-content: center;
+        margin-top: 3rem;
+    }
+
+    /* Affiche du film */
+    #poster {
+        margin-top: 6rem;
+        width: 100%;
+        max-width: 350px;
+        height: auto;
+        border-radius: 10px;
+        object-fit: cover;
+        display: block;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+
+    /* Infos du film */
+    .movie-info {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        color: #f4ebd6;
+        gap: 0rem;
+        margin-top: auto;
+        max-width: 950px;
+        background-color: rgba(27, 148, 118, 0.3);
+        border-radius: 10px;
+        padding: 10px;
+        text-shadow: (2px, 2px, 4px, rgba(0, 0, 0, 0.9));
+        font-weight: bold;
+    }
+
+    /* Titre */
+    .movie-info h1 {
+        color: #f4ebd6;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+    }
+
+    /* Textes */
+    .movie-info p,
+    .movie-info span {
+        font-size: 1rem;
+        color: #f4ebd6;
+        line-height: 1.5;
+    }
+
+    /* Genres */
+    .movie-info #genres span {
+        margin-right: 5px;
+        padding: 0.2rem 0.5rem;
+        border: 1px solid bisque;
+        border-radius: 5px;
+        color: bisque;
+        font-size: 0.9rem;
+    }
+
+    /* Synopsis */
+    #overview {
+        flex-grow: 1;
+        overflow-y: auto;
+        max-height: 300px;
+        padding-right: 5px;
+    }
+
+    .rating {
+        font-weight: bolder;
+    }
+
+    #tagline {
+        color: #f4ebd6;
+    }
+
+    /* Optionnel : scrollbar pour le synopsis
+    #overview::-webkit-scrollbar {
+        width: 6px;
+    } */
+
+    #overview::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 3px;
+    }
+
+/* -----------------------------Conteneur du bas de page----------------------------------------- */
+    .contenu-bas {
+        background: linear-gradient(308deg, rgba(18, 70, 96, 1) 46%, rgba(27, 148, 118, 1) 100%, rgba(199, 219, 194, 1) 93%);
+        padding: 30px 0;
+        background-size: cover;
+    }
+
+    h3 {
+        text-align: center;
+        color: #f4ebd6;
+
+    }
+
+    .container-acteurs {
+        max-width: 1200px;
+        margin: 50px auto;
+        padding: 2rem;
+        border-radius: 10px;
+        border-color: solid 1px #333;
+        background: linear-gradient(308deg, rgba(18, 70, 96, 1) 46%, rgba(27, 148, 118, 0.315) 100%, rgba(199, 219, 194, 1) 93%);
+        box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    }
+
+
+    .container-acteurs h3 {
+        text-align: center;
+        color: #f4ebd6;
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+    }
+
+    /* --- CONTENEUR DES CARTES --- */
+    #cast-section {
+        display: flex;
+        gap: 20px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+        padding: 10px;
+    }
+
+
+
+    /* --- CARTES ACTEURS --- */
+    .cast-card {
+        width: 260px;
+        background-color: rgba(244, 235, 214, 0.95);
+        padding: 10px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+
+    /* --- IMAGE DE L’ACTEUR --- */
+    .cast-card img {
+        width: 100px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
+    /* --- INFOS ACTEUR --- */
+    .cast-card div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    /* Nom acteur */
+    .cast-card h5 {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #123;
+    }
+
+    /* Rôle acteur */
+    .cast-card p {
+        margin: 5px 0 0 0;
+        color: #333;
+        font-weight: 500;
+        font-size: 0.9rem;
+    }
 
    
-    
+/*VERSION RESPONSIVE*/
+
+    @media (max-width: 992px) {
+
+    /* Navbar */
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1050;
+        background-color: rgba(18, 70, 96, 1);
+    }
+
+    .navbar .container {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navbar-collapse {
+        background-color: rgba(18, 70, 96, 0.98);
+        border-radius: 0 0 12px 12px;
+        padding: 1rem 0;
+    }
+
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .nav-link {
+        color: #F4EBD6 !important;
+        font-weight: bold;
+        font-size: 1rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .nav-link:hover {
+        background-color: rgba(199, 219, 194, 0.3);
+        border-radius: 10px;
+        padding: 5px 10px;
+    }
+
+    /* Barre de recherche */
+    .search-bar {
+        margin: 10px auto;
+        width: 80%;
+        justify-content: center;
+        background-color: rgba(244, 235, 214, 0.1);
+        border: 1px solid #F4EBD6;
+    }
+
+    .search-bar input {
+        width: 100%;
+        opacity: 1;
+    }
+
+    /* Section film */
+    .container_movie {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #poster {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .movie-info {
+        width: 90%;
+        margin-top: 1rem;
+        text-align: center;
+    }
+
+    #overview {
+        max-height: none;
+    }
+
+    /* Cast section */
+    #cast-section {
+        overflow-x: auto;   
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
+    .cast-card {
+        min-width: 220px;
+    }
+
+    }
+
