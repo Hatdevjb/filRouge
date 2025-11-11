@@ -310,7 +310,7 @@
     });
 
     window.addEventListener("load", () => {
-    const reparation = true; // Mettre à true pour activer la page de maintenance si nécessaire
+    const reparation = false; // Mettre à true pour activer la page de maintenance si nécessaire
     if (reparation) {
         window.location.href = "reparation.html";
     } else {
