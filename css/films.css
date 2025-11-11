@@ -247,6 +247,7 @@ footer {
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 768px) {
     .conteneurCategories {
+        margin-top: 35%;
         flex-direction: column; /* empile les cases */
         align-items: center;
     }
