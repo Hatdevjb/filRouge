@@ -197,6 +197,8 @@
 
 
     function getMovieDetails(idMovie) {
+
+        //Appel de l'API pour l'obtention des details complet d'un film 
     fetch(`https://api.themoviedb.org/3/movie/${idMovie}?language=fr-FR`, options)
         .then(result => {
         if (!result.ok) throw new Error("Erreur initialisation details.json");
@@ -204,29 +206,38 @@
         })
         .then(movie => {
         // RÉCUPÉRATION DES ÉLÉMENTS HTML
-        let title1 = document.getElementById('title');
-        let poster1 = document.getElementById('poster');
-        let overview1 = document.getElementById('overview');
-        let releaseDate1 = document.getElementById('release-date');
-        let runtime1 = document.getElementById('runtime');
-        let rating1 = document.getElementById('rating');
-        let tagline1 = document.getElementById('tagline');
-        let movieSection1 = document.getElementById('movie-section');
-        let genresDiv1 = document.getElementById('genres');
+        let title1 = document.getElementById('title'); // le titre 
+        let poster1 = document.getElementById('poster'); // l'image du poster
+        let overview1 = document.getElementById('overview'); // Resumé du film
+        let releaseDate1 = document.getElementById('release-date');// La date de sortie
+        let runtime1 = document.getElementById('runtime'); //la durée du film
+        let rating1 = document.getElementById('rating'); // La note du film
+        let tagline1 = document.getElementById('tagline'); //la tagline du film (ou phrase d'accroche)
+        let movieSection1 = document.getElementById('movie-section'); // la section concernant la description du film
+        let genresDiv1 = document.getElementById('genres'); // le(s) genre(s) du film
 
         // REMPLISSAGE INFOS FILM 
+
+        //titre du film 
         title1.textContent = movie.title;
+
+        //generation de l'affiche du film (poster)
         poster1.src = movie.poster_path
             ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
             : "default-poster.jpg";
+
+        //generation du background pour le film 
         movieSection1.style.backgroundImage = movie.backdrop_path
             ? `url('https://image.tmdb.org/t/p/original${movie.backdrop_path}')`
             : "none";
+        //generation du resumé du film
         overview1.textContent = movie.overview;
+
+        //generation de la date de sortie 
         releaseDate1.textContent = formatDate(movie.release_date)|| "Date inconnue";
-        runtime1.textContent = movie.runtime ? `${movie.runtime} min` : "Durée inconnue";
-        rating1.textContent = movie.vote_average ? movie.vote_average.toFixed(1) : "N/A";
-        tagline1.textContent = movie.tagline || "";
+        runtime1.textContent = movie.runtime ? `${movie.runtime} min` : "Durée inconnue"; //duree de film en min 
+        rating1.textContent = movie.vote_average ? movie.vote_average.toFixed(1) : "N/A"; //note moyenne arrondi à 1 chiffre
+        tagline1.textContent = movie.tagline || ""; // la phrase d'accroche du film
 
         // GENRES
         genresDiv1.innerHTML = "";
@@ -239,44 +250,55 @@
         .catch(error => console.log("Erreur fetch détails :", error));
     }
 
+    // ------------------ RÉCUPÉRATION DU CASTING ET DE L’ÉQUIPE ------------------
     function getMovieCredits(idMovie) {
+    // Appel de l'API  pour les credits du film 
     fetch(`https://api.themoviedb.org/3/movie/${idMovie}/credits?language=fr-FR`, options)
         .then(results => {
+            //on verifie si la requete est bien passée
         if (!results.ok) throw new Error("Erreur credits.json");
         return results.json();
         })
         .then(data => { // CREATION DIVRÉALISATEUR ET SCÉNARISTE
-        const realisateurs = data.crew.find(person => person.job === "Director");
-        const directeur = data.crew.find(person => person.job ==="Writer");
+        const realisateurs = data.crew.find(person => person.job === "Director"); //   on recherche le realisateur 
+        const directeur = data.crew.find(person => person.job ==="Writer"); //  on recherche le scenariste 
 
-        const ratingP = document.querySelector('.rating');
+        //On recuperer les elements html, pour y inserer par la suite les info de l'equipe
+        const ratingP = document.querySelector('.rating'); 
         let divCrew = document.getElementById('crew-info');
-
+        
+        //creation du bloc si il n'existe pas 
         if (!divCrew){
             divCrew = document.createElement('div');
             divCrew.id = 'crew-info';
             divCrew.style.marginBottom = '15px';
+            //on y insere le bloc avant la note
             ratingP.parentNode.insertBefore(divCrew, ratingP);
 
         }
-        divCrew.innerHTML = '';
+        divCrew.innerHTML = ''; //evite les doublons 
         
+        //on ajoute le realisateur
         if (realisateurs) {
             const textRealisateur  = document.createElement('p');
             textRealisateur.textContent = `Réalisateur : ${realisateurs.name}`;
             divCrew.appendChild(textRealisateur);
         }
 
+        //on ajoute le scenariste
         if (directeur) {
             const textDirecteur = document.createElement('p');
             textDirecteur.textContent = `Scénariste : ${directeur.name}`;
             divCrew.appendChild(textDirecteur);
         }
 
-        const acteurs = data.cast.slice(0, 10);
+        const acteurs = data.cast.slice(0, 10);//on slectionne 10 acteurs 
+        //on recuperer l'element HTML où on affichera les acteurs 
         const castSection = document.getElementById('cast-section');
-        castSection.innerHTML = "";
 
+        castSection.innerHTML = ""; //avant la reinsertion, on vide 
+
+        //creation de la boucle pour chaque acteurs generés (on les affichera sous forme de cartes)
         acteurs.forEach(actor => {
             const div = document.createElement('div');
             div.innerHTML = `
